@@ -1,0 +1,14 @@
+terraform init
+
+terraform plan
+
+terraform apply -auto-approve
+
+
+echo "# magento-aws" >> README.md
+git init
+git add *.*
+git commit -m "first commit"
+git remote add origin https://github.com/anupkd/magento-aws.git
+git push -u origin master
+                
