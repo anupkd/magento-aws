@@ -12,5 +12,6 @@ sudo curl -L https://raw.githubusercontent.com/anupkd/magento-aws/master/docker-
 sudo curl -L https://raw.githubusercontent.com/anupkd/magento-aws/master/varnish/default.vcl -o /tmp/default.vcl
 sudo /usr/local/bin/docker-compose -f /tmp/docker-compose.yml up -d
 sudo docker run --name apache2 -dt  --network magento -p 8080:80 anupkkd/magento2:latest
-sudo docker run --name varnish -dt --network magento -p 80:80 -v /tmp/default.vcl:/etc/varnish/default.vcl:ro --tmpfs /usr/local/var/varnish:e
-xec  varnish
+sudo docker run --name varnish -dt --network magento -p 80:80 -v /tmp/default.vcl:/etc/varnish/default.vcl:ro --tmpfs /usr/local/var/varnish:exec  varnish
+
+
