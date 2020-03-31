@@ -16,7 +16,7 @@ data "aws_ami" "amazon-linux-2" {
   }
 }
 
-resource "aws_instance" "jenkins-instance" {
+resource "aws_instance" "magento-instance" {
   ami             = "${data.aws_ami.amazon-linux-2.id}"
   instance_type   = "t2.small"
   key_name        = "${var.keyname}"
@@ -24,11 +24,12 @@ resource "aws_instance" "jenkins-instance" {
   vpc_security_group_ids = ["${aws_security_group.sg_allow_ssh_jenkins.id}"]
   subnet_id          = "${aws_subnet.public-subnet-1.id}"
   #name            = "${var.name}"
-  user_data = "${file("install_majento.sh")}"
+  user_data = "${file("install_magento.sh")}"
 
+  
   associate_public_ip_address = true
   tags = {
-    Name = "Jenkins-Instance"
+    Name = "magento-Instance"
   }
 }
 
@@ -66,6 +67,6 @@ resource "aws_security_group" "sg_allow_ssh_jenkins" {
   }
 }
 
-output "jenkins_ip_address" {
-  value = "${aws_instance.jenkins-instance.public_dns}"
+output "magento_ip_address" {
+  value = "${aws_instance.magento-instance.public_dns}"
 }

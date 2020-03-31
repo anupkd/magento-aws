@@ -1,0 +1,23 @@
+version: '3.3'
+
+networks:
+  default:
+    external:
+      name: magento
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: myfadxb123
+       MYSQL_DATABASE: vlogsale
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: myfadxb123
+     container_name: mysql
+
+volumes:
+    db_data: {}
+
